@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public interface SaveLoadFunctions {
+public interface SaveLoadFunctions<K, V> {
 
     void saveToFile(String filePath) throws IOException;
 
