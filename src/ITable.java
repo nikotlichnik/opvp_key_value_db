@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public interface iTable extends Serializable {
+public interface ITable extends Serializable {
 
     // Добавление или обновление значения по ключу
     void put(String key, String value);

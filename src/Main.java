@@ -3,19 +3,19 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Создаем многотабличную базу данных
-            iDatabase db = new Database();
+            IDatabase db = new Database();
 
             // Создаем таблицы
             db.createTable("Users");
             db.createTable("Products");
 
             // Работаем с таблицей Users
-            iTable usersTable = db.getTable("Users");
+            ITable usersTable = db.getTable("Users");
             usersTable.put("Alice", "25");
             usersTable.put("Bob", "30");
 
             // Работаем с таблицей Products
-            iTable productsTable = db.getTable("Products");
+            ITable productsTable = db.getTable("Products");
             productsTable.put("Laptop", "1000");
             productsTable.put("Phone", "500");
 

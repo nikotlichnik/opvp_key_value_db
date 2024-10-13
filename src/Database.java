@@ -1,9 +1,9 @@
 import java.io.*;
 import java.util.HashMap;
 
-public class Database implements iDatabase {
+public class Database implements IDatabase {
 
-    private final HashMap<String, iTable> tables = new HashMap<>();
+    private final HashMap<String, ITable> tables = new HashMap<>();
 
     @Override
     public void createTable(String tableName) {
@@ -25,7 +25,7 @@ public class Database implements iDatabase {
     }
 
     @Override
-    public iTable getTable(String tableName) {
+    public ITable getTable(String tableName) {
         if (tables.containsKey(tableName)) {
             return tables.get(tableName);
         } else {

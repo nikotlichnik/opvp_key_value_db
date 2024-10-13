@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Table implements iTable {
+public class Table implements ITable {
 
     private final HashMap<String, String> storage = new HashMap<>();
 

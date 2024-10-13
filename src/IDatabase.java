@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public interface iDatabase extends Serializable {
+public interface IDatabase extends Serializable {
 
     // Создание новой таблицы
     void createTable(String tableName);
@@ -12,7 +12,7 @@ public interface iDatabase extends Serializable {
     boolean containsTable(String tableName);
 
     // Получение таблицы по имени
-    iTable getTable(String tableName);
+    ITable getTable(String tableName);
 
     // Запись базы данных на диск
     void saveToFile(String filePath) throws Exception;
