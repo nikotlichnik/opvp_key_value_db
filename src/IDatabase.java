@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.nio.file.Path;
 
 public interface IDatabase extends Serializable {
 
@@ -15,8 +16,8 @@ public interface IDatabase extends Serializable {
     ITable getTable(String tableName);
 
     // Запись базы данных на диск
-    void saveToFile(String filePath) throws Exception;
+    void saveToFile(Path filePath) throws Exception;
 
     // Загрузка базы данных с диска
-    void loadFromFile(String filePath) throws Exception;
+    void loadFromFile(Path filePath) throws Exception;
 }

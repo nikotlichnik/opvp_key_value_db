@@ -1,5 +1,8 @@
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Files;
 import java.util.HashMap;
+import static java.nio.file.StandardOpenOption.CREATE;
 
 public class Database implements IDatabase {
 
@@ -34,15 +37,15 @@ public class Database implements IDatabase {
     }
 
     @Override
-    public void saveToFile(String filePath) throws Exception {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+    public void saveToFile(Path filePath) throws Exception {
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(filePath, CREATE))) {
             oos.writeObject(this);
         }
     }
 
     @Override
-    public void loadFromFile(String filePath) throws Exception {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+    public void loadFromFile(Path filePath) throws Exception {
+        try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(filePath))) {
             Database loaded = (Database) ois.readObject();
             this.tables.clear();
             this.tables.putAll(loaded.tables);

@@ -1,3 +1,6 @@
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,14 +23,15 @@ public class Main {
             productsTable.put("Phone", "500");
 
             // Сохраняем базу данных на диск
-            db.saveToFile("/Users/andrei/Documents/ITMO/opvp_key_value_db/src/database.ser");
+            Path path = Paths.get("src/database.ser");
+            db.saveToFile(path);
 
             // Очищаем данные в памяти
             db = new Database();
             System.out.println("База данных очищена из памяти.");
 
             // Загружаем базу данных с диска
-            db.loadFromFile("/Users/andrei/Documents/ITMO/opvp_key_value_db/src/database.ser");
+            db.loadFromFile(path);
             System.out.println("База данных загружена с диска.");
 
             // Проверяем данные после загрузки
