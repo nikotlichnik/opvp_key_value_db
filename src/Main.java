@@ -1,10 +1,14 @@
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
+            Logger logger = LoggerFactory.getLogger(Main.class);
+
             // Создаем многотабличную базу данных
             IDatabase db = new Database();
 
@@ -28,15 +32,15 @@ public class Main {
 
             // Очищаем данные в памяти
             db = new Database();
-            System.out.println("База данных очищена из памяти.");
+            logger.info("База данных очищена из памяти.");
 
             // Загружаем базу данных с диска
             db.loadFromFile(path);
-            System.out.println("База данных загружена с диска.");
+            logger.info("База данных загружена с диска.");
 
             // Проверяем данные после загрузки
-            System.out.println("Users: Alice = " + db.getTable("Users").get("Alice"));
-            System.out.println("Products: Laptop = " + db.getTable("Products").get("Laptop"));
+            logger.info("Users: Alice = {}", db.getTable("Users").get("Alice"));
+            logger.info("Products: Laptop = {}", db.getTable("Products").get("Laptop"));
 
         } catch (Exception e) {
             // Выводим более информативное сообщение об ошибке
