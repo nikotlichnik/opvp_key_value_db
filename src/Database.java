@@ -37,14 +37,14 @@ public class Database implements IDatabase {
     }
 
     @Override
-    public void saveToFile(Path filePath) throws Exception {
+    public void saveToFile(Path filePath) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(filePath, CREATE))) {
             oos.writeObject(this);
         }
     }
 
     @Override
-    public void loadFromFile(Path filePath) throws Exception {
+    public void loadFromFile(Path filePath) throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(filePath))) {
             Database loaded = (Database) ois.readObject();
             this.tables.clear();
