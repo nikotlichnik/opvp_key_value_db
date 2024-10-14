@@ -1,6 +1,8 @@
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Path;
 
-public interface iDatabase extends Serializable {
+public interface IDatabase extends Serializable {
 
     // Создание новой таблицы
     void createTable(String tableName);
@@ -12,11 +14,11 @@ public interface iDatabase extends Serializable {
     boolean containsTable(String tableName);
 
     // Получение таблицы по имени
-    iTable getTable(String tableName);
+    ITable getTable(String tableName);
 
     // Запись базы данных на диск
-    void saveToFile(String filePath) throws Exception;
+    void saveToFile(Path filePath) throws IOException;
 
     // Загрузка базы данных с диска
-    void loadFromFile(String filePath) throws Exception;
+    void loadFromFile(Path filePath) throws IOException, ClassNotFoundException;
 }

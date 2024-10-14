@@ -1,8 +1,9 @@
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class Table implements iTable {
+public class Table implements ITable {
 
-    private final HashMap<String, String> storage = new HashMap<>();
+    private final Map<String, String> storage = new ConcurrentHashMap<>();
 
     @Override
     public void put(String key, String value) {
