@@ -1,12 +1,14 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Files;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import static java.nio.file.StandardOpenOption.CREATE;
 
 public class Database implements IDatabase {
 
-    private final HashMap<String, ITable> tables = new HashMap<>();
+    private final Map<String, ITable> tables = new ConcurrentHashMap<>();
 
     @Override
     public void createTable(String tableName) {
